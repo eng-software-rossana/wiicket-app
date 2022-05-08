@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
-import { Button, TextInput, View } from 'react-native';
-import LoginStyles from './Style-Login';
+import { TextInput, View } from 'react-native';
+import Button from '../../components/button/Button';
+import { buttonStyles, textStyles } from '../../components/button/buttonStyles';
+import { loginStyles } from './loginStyles';
 
 const Login = ({ navigation }: { navigation: any }) => {
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
   return (
-    <View>
+    <View style={loginStyles.default}>
       <TextInput
-        style={LoginStyles.textBox}
         placeholder="Email"
         onChangeText={newText => setUserEmail(newText)}
         defaultValue={userEmail}
       />
       <TextInput
-        style={LoginStyles.textBox}
         placeholder="Senha"
         onChangeText={newText => setPassword(newText)}
         secureTextEntry={true}
         defaultValue={password}
       />
+
       <Button
-        title="Login"
+        style={buttonStyles.login}
+        text="Login"
         onPress={() => navigation.navigate('Home', { name: 'home' })}
       />
     </View>
   );
 };
-
 export default Login;
