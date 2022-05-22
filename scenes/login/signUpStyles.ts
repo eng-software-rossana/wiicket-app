@@ -5,6 +5,7 @@ const signUpStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
+    backgroundColor: '#0E3361',
   },
 });
 

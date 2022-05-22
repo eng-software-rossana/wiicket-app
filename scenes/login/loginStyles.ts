@@ -5,23 +5,32 @@ const loginStyles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    backgroundColor: '#C4C4C4',
+    backgroundColor: '#0E3361',
   },
 
   inputStyle: {
     width: '80%',
     borderColor: '#000000',
     borderWidth: 1,
-    paddingLeft: 20,
-    borderRadius: 10,
+    paddingLeft: 10,
+    borderRadius: 20,
     backgroundColor: '#FFFFFF',
-    marginBottom: 10,
+    marginBottom: 20,
   },
 
   registerStyle: {
     justifyContent: 'flex-start',
-    color: '#0759de',
+    color: '#FA8837',
     paddingTop: 20,
+    fontSize: 18,
+  },
+
+  errorStyle: {
+    justifyContent: 'flex-start',
+    color: '#FA0202',
+    paddingBottom: 20,
+    fontSize: 14,
+    //transform: [{ translateY: 1 }],
   },
 
   titleStyle: {

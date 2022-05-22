@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useState } from 'react';
-import { Image, Text, TextInput, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
+import { HelperText, TextInput } from 'react-native-paper';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
@@ -12,10 +13,22 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSecure, setIsSecure] = useState(true);
-  const register = 'Cadastrar-se';
+  const [showHelper, setShowHelper] = useState(false);
+
+  const loginValidations = () => {
+    let valid = false;
+    let validUser =
+      userEmail === 'comprador@gmail.com' && password === 'wiicket123';
+    if (userEmail && password) {
+      if (validUser) {
+        valid = true;
+      }
+    }
+    return valid;
+  };
+
   return (
     <View style={loginStyles.loginScreen}>
-      {/* <Text style={loginStyles.titleStyle}>Wiicket</Text> */}
       <Image
         style={loginStyles.titleStyle}
         source={require('../../assets/login/logo_wiicket.png')}
@@ -27,28 +40,39 @@ const Login = () => {
           onChangeText={newText => setUserEmail(newText)}
           defaultValue={userEmail}
         />
-
         <TextInput
           style={loginStyles.inputStyle}
           placeholder="Senha"
           onChangeText={newText => setPassword(newText)}
           secureTextEntry={isSecure}
+          right={
+            <TextInput.Icon
+              name={isSecure ? 'eye' : 'eye-off'}
+              onPress={() => setIsSecure(!isSecure)}
+            />
+          }
           defaultValue={password}
         />
+
+        <HelperText
+          style={loginStyles.errorStyle}
+          type="error"
+          visible={showHelper}>
+          Email ou senha inválido
+        </HelperText>
 
         <Button
           style={buttonStyles.login}
           text="Entrar"
           onPress={() => {
-            if (
-              userEmail === 'comprador@gmail.com' &&
-              password === 'wiicket123'
-            ) {
+            if (loginValidations()) {
+              setShowHelper(false);
               navigation.navigate('Home');
+            } else {
+              setShowHelper(true);
             }
           }}
         />
-
         <Text
           onPress={() => navigation.navigate('SignUp')}
           style={loginStyles.registerStyle}>
