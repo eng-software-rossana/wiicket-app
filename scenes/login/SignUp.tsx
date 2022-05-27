@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
@@ -13,17 +13,17 @@ const SignUp = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
-  const [userCPF, setUserCPF] = useState('');
+  const [userID, setUserID] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isSecure, setIsSecure] = useState(true);
   const [isConfirmSecure, setIsConfirmSecure] = useState(true);
   const [showHelperPassword, setShowHelperPassword] = useState(false);
-  const [showHelperPersonID, setShowHelperPersonID] = useState(false);
+  const [showHelperUserID, setShowHelperUserID] = useState(false);
 
   const limitNumberInput = (newText: string): void => {
     newText = newText.replace(/[^0-9]/g, '');
-    setUserCPF(newText);
+    setUserID(newText);
   };
 
   const limitUserNameInput = (newText: string): void => {
@@ -31,16 +31,11 @@ const SignUp = () => {
     setUserName(newText);
   };
 
-  // const limitEmailInput = (newText: string): void => {
-  //   newText = newText.replace(/\S+@\S+\.\S+/, '');
-  //   setUserEmail(newText);
-  // };
-
   const isSignUpValid = (): boolean => {
     let valid = false;
-    if (userEmail && userName && userCPF && password && confirmPassword) {
+    if (userEmail && userName && userID && password && confirmPassword) {
       if (password === confirmPassword) {
-        if (userCPF.length === 11) {
+        if (userID.length === 11) {
           valid = true;
         }
       }
@@ -57,12 +52,12 @@ const SignUp = () => {
   }, [password, confirmPassword]);
 
   useEffect(() => {
-    if (userCPF.length === 11 || userCPF.length === 0) {
-      setShowHelperPersonID(false);
+    if (userID.length === 11 || userID.length === 0) {
+      setShowHelperUserID(false);
     } else {
-      setShowHelperPersonID(true);
+      setShowHelperUserID(true);
     }
-  }, [userCPF]);
+  }, [userID]);
 
   return (
     <View style={signUpStyles.default}>
@@ -76,7 +71,6 @@ const SignUp = () => {
       <TextInput
         style={loginStyles.inputStyle}
         placeholder="Nome Completo"
-        //onChangeText={newText => setUserName(newText)}
         onChangeText={newText => limitUserNameInput(newText)}
         defaultValue={userName}
         value={userName}
@@ -86,16 +80,16 @@ const SignUp = () => {
         placeholder="CPF"
         onChangeText={newText => limitNumberInput(newText)}
         keyboardType="numeric"
-        value={userCPF}
-        defaultValue={userCPF}
+        value={userID}
+        defaultValue={userID}
         maxLength={11}
       />
 
-      {showHelperPersonID ? (
+      {showHelperUserID ? (
         <HelperText
           style={loginStyles.errorStyle}
           type="error"
-          visible={showHelperPersonID}>
+          visible={showHelperUserID}>
           O campo de CPF precisa de 11 dígitos
         </HelperText>
       ) : null}

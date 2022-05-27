@@ -30,7 +30,6 @@ const loginStyles = StyleSheet.create({
     color: '#FA0202',
     paddingBottom: 20,
     fontSize: 14,
-    //transform: [{ translateY: 1 }],
   },
 
   titleStyle: {

@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, StatusBar, Text, View } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
@@ -13,7 +13,7 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSecure, setIsSecure] = useState(true);
-  const [showHelper, setShowHelper] = useState(false);
+  const [showHelperLogin, setShowHelperLogin] = useState(false);
 
   const loginValidations = () => {
     let valid = false;
@@ -57,7 +57,7 @@ const Login = () => {
         <HelperText
           style={loginStyles.errorStyle}
           type="error"
-          visible={showHelper}>
+          visible={showHelperLogin}>
           Email ou senha inválido
         </HelperText>
 
@@ -66,10 +66,10 @@ const Login = () => {
           text="Entrar"
           onPress={() => {
             if (loginValidations()) {
-              setShowHelper(false);
+              setShowHelperLogin(false);
               navigation.navigate('Home');
             } else {
-              setShowHelper(true);
+              setShowHelperLogin(true);
             }
           }}
         />
