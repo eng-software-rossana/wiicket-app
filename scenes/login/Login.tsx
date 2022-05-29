@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useState } from 'react';
-import { Image, StatusBar, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
@@ -36,12 +36,16 @@ const Login = () => {
       <View style={loginStyles.loginFields}>
         <TextInput
           style={loginStyles.inputStyle}
+          theme={{ roundness: 20 }}
+          mode={'outlined'}
           placeholder="Email"
           onChangeText={newText => setUserEmail(newText)}
           defaultValue={userEmail}
         />
         <TextInput
           style={loginStyles.inputStyle}
+          theme={{ roundness: 20 }}
+          mode={'outlined'}
           placeholder="Senha"
           onChangeText={newText => setPassword(newText)}
           secureTextEntry={isSecure}

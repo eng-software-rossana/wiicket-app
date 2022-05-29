@@ -5,12 +5,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUp from '../scenes/login/SignUp';
 import { RootStackParamList } from './RootStackParamList';
 import { StatusBar } from 'react-native';
+import HeaderBar from '../components/headerBar/HeaderBar';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const StackNavigator = () => {
   return (
     <>
-      <StatusBar translucent backgroundColor="transparent" />
+      <StatusBar translucent={false} backgroundColor={'#0E3361'} />
       <Stack.Navigator>
         <Stack.Screen
           name="Login"
@@ -30,7 +31,11 @@ const StackNavigator = () => {
             headerTintColor: '#FA8837',
           }}
         />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </>
   );
