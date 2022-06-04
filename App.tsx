@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './navigation/StackNavigator';
-import { StatusBar } from 'react-native';
 
 const App = () => {
   return (
@@ -12,3 +11,9 @@ const App = () => {
 };
 
 export default App;
+/*
+<Drawer.Navigator initialRouteName="Home">
+  <Drawer.Screen name="Profile" component={SignUp} />
+  <Drawer.Screen name="Purchase History" component={Login} />
+</Drawer.Navigator>;
+*/

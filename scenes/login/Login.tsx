@@ -71,7 +71,7 @@ const Login = () => {
           onPress={() => {
             if (loginValidations()) {
               setShowHelperLogin(false);
-              navigation.navigate('Home');
+              navigation.navigate('TabHome');
             } else {
               setShowHelperLogin(true);
             }
