@@ -3,7 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Account from '../account/Account';
 import Cart from '../cart/Cart';
 import Home from './Home';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 const TabHome = () => {
   const Tab = createMaterialBottomTabNavigator();

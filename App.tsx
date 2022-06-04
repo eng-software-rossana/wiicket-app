@@ -11,9 +11,3 @@ const App = () => {
 };
 
 export default App;
-/*
-<Drawer.Navigator initialRouteName="Home">
-  <Drawer.Screen name="Profile" component={SignUp} />
-  <Drawer.Screen name="Purchase History" component={Login} />
-</Drawer.Navigator>;
-*/
