@@ -8,6 +8,8 @@ import { buttonStyles } from '../../components/button/buttonStyles';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { loginStyles } from './loginStyles';
 
+const logoPath = '../../assets/login/logo_wiicket.png';
+
 const Login = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [userEmail, setUserEmail] = useState('');
@@ -29,10 +31,7 @@ const Login = () => {
 
   return (
     <View style={loginStyles.loginScreen}>
-      <Image
-        style={loginStyles.titleStyle}
-        source={require('../../assets/login/logo_wiicket.png')}
-      />
+      <Image style={loginStyles.titleStyle} source={require(logoPath)} />
       <View style={loginStyles.loginFields}>
         <TextInput
           style={loginStyles.inputStyle}

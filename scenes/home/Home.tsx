@@ -7,12 +7,27 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const scrollViewStyle = StyleSheet.create({
   scroll: {
-    flexGrow: 1,
+    display: 'flex',
     alignItems: 'center',
   },
-  headerScroll: { height: 40, fontFamily: 'verdana' },
+  headerScroll: { height: 40 },
 
-  categoriesScroll: { padding: 8, borderWidth: 0.6 },
+  categoriesScroll: {
+    padding: 8,
+    backgroundColor: '#FA8837',
+  },
+
+  buildPCTouchable: {
+    width: 600,
+    height: 221,
+  },
+
+  buildPC: {
+    width: '100%',
+    height: '100%',
+  },
+
+  categoryStyle: { fontFamily: 'verdana', color: '#FFFFFF' },
 });
 
 const json_data = [
@@ -55,6 +70,8 @@ const categories_data = [
   },
 ];
 
+const buildPCPath = '../../assets/home/monteSeuPCGrande.jpg';
+
 const products = json_data.map(product => (
   <Product
     key={product.productID}
@@ -69,7 +86,7 @@ const categories = categories_data.map(category => (
   <TouchableOpacity
     style={scrollViewStyle.categoriesScroll}
     key={category.name}>
-    <Text>{category.name}</Text>
+    <Text style={scrollViewStyle.categoryStyle}>{category.name}</Text>
   </TouchableOpacity>
 ));
 
@@ -80,7 +97,6 @@ const Home = () => {
     console.log(searchText);
   };
 
-  const [active, setActive] = React.useState('');
   return (
     <>
       <View>
@@ -103,8 +119,12 @@ const Home = () => {
         {categories}
       </ScrollView>
       <ScrollView contentContainerStyle={scrollViewStyle.scroll}>
-        <TouchableOpacity>
-          <Image source={require('../../assets/home/monte.png')} />
+        <TouchableOpacity style={scrollViewStyle.buildPCTouchable}>
+          <Image
+            resizeMode="contain"
+            style={scrollViewStyle.buildPC}
+            source={require(buildPCPath)}
+          />
         </TouchableOpacity>
         {products}
       </ScrollView>
