@@ -2,7 +2,6 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from './RootStackParamList';
 import { StatusBar } from 'react-native';
-import Home from '../scenes/home/Home';
 import TabHome from '../scenes/home/TabHome';
 import SignUp from '../scenes/login/SignUp';
 import Login from '../scenes/login/Login';
@@ -37,11 +36,6 @@ const StackNavigator = () => {
           component={TabHome}
           options={{ headerShown: false }}
         />
-        {/* <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        /> */}
       </Stack.Navigator>
     </>
   );

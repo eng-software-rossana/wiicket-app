@@ -31,7 +31,7 @@ const buttonStyles = StyleSheet.create({
 const textStyles = StyleSheet.create({
   default: {
     color: 'white',
-    fontFamily: 'Cambria',
+    fontFamily: 'Verdana',
     fontSize: 20,
   },
 });
