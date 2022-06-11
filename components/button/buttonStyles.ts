@@ -16,12 +16,22 @@ const buttonStyles = StyleSheet.create({
     height: 50,
     width: '40%',
   },
+
+  buy: {
+    alignItems: 'center',
+    backgroundColor: '#FA8837',
+    padding: 10,
+    borderRadius: 10,
+    marginTop: 10,
+    height: 50,
+    width: '40%',
+  },
 });
 
 const textStyles = StyleSheet.create({
   default: {
     color: 'white',
-    fontFamily: 'Cambria',
+    fontFamily: 'Verdana',
     fontSize: 20,
   },
 });

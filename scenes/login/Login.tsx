@@ -1,12 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useState } from 'react';
-import { Image, StatusBar, Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { loginStyles } from './loginStyles';
+
+const logoPath = '../../assets/login/logo_wiicket.png';
 
 const Login = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
@@ -29,19 +31,20 @@ const Login = () => {
 
   return (
     <View style={loginStyles.loginScreen}>
-      <Image
-        style={loginStyles.titleStyle}
-        source={require('../../assets/login/logo_wiicket.png')}
-      />
+      <Image style={loginStyles.titleStyle} source={require(logoPath)} />
       <View style={loginStyles.loginFields}>
         <TextInput
           style={loginStyles.inputStyle}
+          theme={{ roundness: 20 }}
+          mode={'outlined'}
           placeholder="Email"
           onChangeText={newText => setUserEmail(newText)}
           defaultValue={userEmail}
         />
         <TextInput
           style={loginStyles.inputStyle}
+          theme={{ roundness: 20 }}
+          mode={'outlined'}
           placeholder="Senha"
           onChangeText={newText => setPassword(newText)}
           secureTextEntry={isSecure}
@@ -67,7 +70,7 @@ const Login = () => {
           onPress={() => {
             if (loginValidations()) {
               setShowHelperLogin(false);
-              navigation.navigate('Home');
+              navigation.navigate('TabHome');
             } else {
               setShowHelperLogin(true);
             }

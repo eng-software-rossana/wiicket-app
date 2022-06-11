@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StatusBar, View } from 'react-native';
+import { View } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
@@ -63,6 +63,8 @@ const SignUp = () => {
     <View style={signUpStyles.default}>
       <TextInput
         style={loginStyles.inputStyle}
+        theme={{ roundness: 20 }}
+        mode={'outlined'}
         placeholder="Email"
         onChangeText={newText => setUserEmail(newText)}
         defaultValue={userEmail}
@@ -70,6 +72,8 @@ const SignUp = () => {
       />
       <TextInput
         style={loginStyles.inputStyle}
+        theme={{ roundness: 20 }}
+        mode={'outlined'}
         placeholder="Nome Completo"
         onChangeText={newText => limitUserNameInput(newText)}
         defaultValue={userName}
@@ -77,6 +81,8 @@ const SignUp = () => {
       />
       <TextInput
         style={loginStyles.inputStyle}
+        theme={{ roundness: 20 }}
+        mode={'outlined'}
         placeholder="CPF"
         onChangeText={newText => limitNumberInput(newText)}
         keyboardType="numeric"
@@ -96,6 +102,8 @@ const SignUp = () => {
 
       <TextInput
         style={loginStyles.inputStyle}
+        theme={{ roundness: 20 }}
+        mode={'outlined'}
         placeholder="Senha"
         onChangeText={newText => setPassword(newText)}
         secureTextEntry={isSecure}
@@ -111,6 +119,8 @@ const SignUp = () => {
 
       <TextInput
         style={loginStyles.inputStyle}
+        theme={{ roundness: 20 }}
+        mode={'outlined'}
         placeholder="Confirme sua Senha"
         onChangeText={newText => setConfirmPassword(newText)}
         secureTextEntry={isConfirmSecure}
