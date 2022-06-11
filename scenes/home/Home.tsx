@@ -38,6 +38,7 @@ const json_data = [
     cost: 'R$3.599,90',
     imgURI:
       'https://images.kabum.com.br/produtos/fotos/150657/placa-de-video-galax-geforce-rtx-3060-1-click-oc-15-gbps-12gb-gddr6-ray-tracing-dlss-36nol7md1voc_1614253646_gg.jpg',
+    description: 'Placa de Vídeo RTX 3060 - Descrição Padrão',
   },
   {
     productID: '2',
@@ -46,6 +47,7 @@ const json_data = [
     cost: 'R$1.299,00',
     imgURI:
       'https://images.kabum.com.br/produtos/fotos/181088/processador-amd-ryzen-5-5600g-3-9ghz-4-4ghz-max-turbo-am4-video-integrado-6-nucleos-100-100000252box_1627588230_p.jpg',
+    description: 'Processador AMD Ryzen 5 5600G - Descrição Padrão',
   },
 ];
 
@@ -79,6 +81,7 @@ const products = json_data.map(product => (
     title={product.title}
     cost={product.cost}
     imgURI={product.imgURI}
+    description={product.description}
   />
 ));
 

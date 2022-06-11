@@ -3,4 +3,7 @@ export type RootStackParamList = {
   SignUp: undefined;
   Login: undefined;
   TabHome: undefined;
+  ProductPage: {
+    productID?: string;
+  };
 };

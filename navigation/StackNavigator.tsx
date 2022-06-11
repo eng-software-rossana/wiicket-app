@@ -5,6 +5,7 @@ import { StatusBar } from 'react-native';
 import TabHome from '../scenes/home/TabHome';
 import SignUp from '../scenes/login/SignUp';
 import Login from '../scenes/login/Login';
+import ProductPage from '../scenes/product_page/ProductPage';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -34,6 +35,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="TabHome"
           component={TabHome}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ProductPage"
+          component={ProductPage}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
