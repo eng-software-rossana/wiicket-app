@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Title } from 'react-native-paper';
+import { CartContext, ShoppingList } from '../../context/CartContext';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import Button from '../button/Button';
 import { buttonStyles } from '../button/buttonStyles';
@@ -11,22 +12,22 @@ interface Props {
   title: string;
   cost: string;
   imgURI?: string;
-  productID?: string;
+  productID: string;
   description: string;
 }
 
 const Product = (props: Props) => {
+  const { addCartItem } = useContext(CartContext) as ShoppingList;
+
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <Card
       mode="outlined"
       style={productStyles.card}
-      onPress={
-        () =>
-          navigation.navigate('ProductPage', {
-            productID: props.productID,
-          })
-        //console.log('Product Page')
+      onPress={() =>
+        navigation.navigate('ProductPage', {
+          productID: props.productID,
+        })
       }>
       <Card.Cover source={{ uri: props.imgURI }} />
       <Card.Title title={props.title} />
@@ -37,10 +38,12 @@ const Product = (props: Props) => {
         <Button
           style={buttonStyles.buy}
           text="Comprar"
-          onPress={() =>
-            //navigation.navigate('Cart')
-            console.log('Carrinho')
-          }
+          onPress={() => {
+            addCartItem(props.productID);
+            navigation.navigate('TabHome', {
+              screen: 'Carrinho',
+            });
+          }}
         />
       </Card.Actions>
     </Card>

@@ -1,12 +1,14 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useContext } from 'react';
+import { View } from 'react-native';
+import { CartContext, ShoppingList } from '../../context/CartContext';
+import CartProduct from './CartProduct';
 
 const Cart = () => {
-  return (
-    <View>
-      <Text>Cart Screen</Text>
-    </View>
-  );
+  const { cartItems, removeCartItem } = useContext(CartContext) as ShoppingList;
+  const cart = cartItems.map(product => (
+    <CartProduct key={product} id={product} />
+  ));
+  return <View>{cart}</View>;
 };
 
 export default Cart;

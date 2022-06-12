@@ -70,7 +70,7 @@ const Login = () => {
           onPress={() => {
             if (true) {
               setShowHelperLogin(false);
-              navigation.navigate('TabHome');
+              navigation.navigate('TabHome', { screen: 'Loja' });
             } else {
               setShowHelperLogin(true);
             }

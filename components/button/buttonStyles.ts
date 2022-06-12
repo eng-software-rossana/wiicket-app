@@ -17,6 +17,13 @@ const buttonStyles = StyleSheet.create({
     width: '40%',
   },
 
+  cart: {
+    height: 50,
+    width: 50,
+    backgroundColor: '#FA8837',
+    alignItems: 'center',
+  },
+
   buy: {
     alignItems: 'center',
     backgroundColor: '#FA8837',
