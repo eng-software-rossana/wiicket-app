@@ -14,7 +14,7 @@ const TabHome = () => {
     <Tab.Navigator
       initialRouteName={route.params.screen}
       activeColor="#0E3361"
-      inactiveColor="#cfc8c8"
+      inactiveColor="#FFFFFF"
       barStyle={TabHomeStyles.tabNavigator}>
       <Tab.Screen
         name="Loja"

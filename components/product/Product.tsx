@@ -10,14 +10,16 @@ import { productStyles } from './productStyles';
 
 interface Props {
   title: string;
-  cost: string;
+  cost: number;
   imgURI?: string;
   productID: string;
   description: string;
 }
 
 const Product = (props: Props) => {
-  const { addCartItem } = useContext(CartContext) as ShoppingList;
+  const { cartItems, addCartItem, incrementCost } = useContext(
+    CartContext,
+  ) as ShoppingList;
 
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
@@ -32,7 +34,7 @@ const Product = (props: Props) => {
       <Card.Cover source={{ uri: props.imgURI }} />
       <Card.Title title={props.title} />
       <Card.Content>
-        <Title>{props.cost}</Title>
+        <Title>{`R$ ${props.cost}`}</Title>
       </Card.Content>
       <Card.Actions>
         <Button
@@ -40,6 +42,9 @@ const Product = (props: Props) => {
           text="Comprar"
           onPress={() => {
             addCartItem(props.productID);
+            if (!cartItems.includes(props.productID)) {
+              incrementCost(props.cost);
+            }
             navigation.navigate('TabHome', {
               screen: 'Carrinho',
             });

@@ -18,10 +18,17 @@ const buttonStyles = StyleSheet.create({
   },
 
   cart: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
     backgroundColor: '#FA8837',
     alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+  },
+
+  cartOp: {
+    color: '#FFFFFF',
+    fontSize: 28,
   },
 
   buy: {
@@ -32,6 +39,18 @@ const buttonStyles = StyleSheet.create({
     marginTop: 10,
     height: 50,
     width: '40%',
+  },
+  remove: {
+    backgroundColor: '#FA8837',
+    alignItems: 'center',
+    height: 30,
+    width: 140,
+    borderRadius: 15,
+    marginLeft: 10,
+  },
+  removeText: {
+    color: '#FFFFFF',
+    fontFamily: 'Verdana',
   },
 });
 
