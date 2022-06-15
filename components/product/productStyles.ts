@@ -9,6 +9,13 @@ const productStyles = StyleSheet.create({
     margin: 10,
     flexDirection: 'column',
   },
+  cardProductPage: {
+    flex: 1,
+    width: '100%',
+    height: '50%',
+    alignContent: 'center',
+    backgroundColor: '#FFFFFF',
+  },
 });
 
 export { productStyles };

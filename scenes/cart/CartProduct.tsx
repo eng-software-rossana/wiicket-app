@@ -23,7 +23,7 @@ const product = {
 
 const cartProductStyle = StyleSheet.create({
   imgStyle: {
-    width: 150,
+    width: 180,
     height: 150,
   },
 });
@@ -55,9 +55,14 @@ const CartProduct = (props: Props) => {
 
   return (
     <Card style={cartStyles.cartProduct} mode="elevated" key={props.id}>
-      <Card.Title titleStyle={cartStyles.cartFont} title={`${product.title}`} />
+      <Card.Title
+        titleNumberOfLines={5}
+        titleStyle={cartStyles.cartFont}
+        title={`${product.title}`}
+      />
       <Card.Content>
-        <Title style={cartStyles.cartFont}>{`R$ ${product.cost}`}</Title>
+        <Title
+          style={cartStyles.cartProductPrice}>{`R$ ${product.cost}`}</Title>
         <Image
           source={{ uri: product.imgURI }}
           style={cartProductStyle.imgStyle}

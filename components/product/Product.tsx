@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { Card, Title } from 'react-native-paper';
 import { CartContext, ShoppingList } from '../../context/CartContext';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
+import { cartStyles } from '../../scenes/cart/cartStyles';
 import Button from '../button/Button';
 import { buttonStyles } from '../button/buttonStyles';
 import { productStyles } from './productStyles';
@@ -34,7 +35,7 @@ const Product = (props: Props) => {
       <Card.Cover source={{ uri: props.imgURI }} />
       <Card.Title title={props.title} />
       <Card.Content>
-        <Title>{`R$ ${props.cost}`}</Title>
+        <Title style={cartStyles.cartProductPrice}>{`R$ ${props.cost}`}</Title>
       </Card.Content>
       <Card.Actions>
         <Button
