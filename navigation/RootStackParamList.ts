@@ -1,6 +1,12 @@
 export type RootStackParamList = {
-  Home: undefined;
   SignUp: undefined;
   Login: undefined;
-  TabHome: undefined;
+  Payment: undefined;
+  TabHome: {
+    screen?: string;
+    product?: string;
+  };
+  ProductPage: {
+    productID?: string;
+  };
 };
