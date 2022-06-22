@@ -1,9 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useContext, useEffect, useState } from 'react';
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import Button from '../../components/button/Button';
-import { textStyles } from '../../components/button/buttonStyles';
+import TotalCost from '../../components/totalCost/TotalCost';
 import { CartContext, ShoppingList } from '../../context/CartContext';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import CartProduct from './CartProduct';
@@ -14,21 +14,6 @@ const Cart = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const { cartItems, cost } = useContext(CartContext) as ShoppingList;
   const [cart, setCart] = useState<JSX.Element[]>([]);
-
-  const TotalCost = () => {
-    return (
-      <TouchableOpacity
-        disabled={true}
-        style={cartStyles.cartCurrentCost}
-        onPress={() => {
-          true;
-        }}>
-        <Text style={textStyles.default}>{`Preço Total: ${cost.toFixed(
-          2,
-        )}`}</Text>
-      </TouchableOpacity>
-    );
-  };
 
   useEffect(() => {
     setCart(
