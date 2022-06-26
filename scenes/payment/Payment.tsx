@@ -39,8 +39,6 @@ const Payment = () => {
         size={200}
         color="white"
         backgroundColor="transparent"
-        // enableLinearGradient
-        // linearGradient={['rgb(255,255,255)', 'rgb(0,0,0)']}
       />
       <Button
         style={buttonStyles.copyPaymentCode}

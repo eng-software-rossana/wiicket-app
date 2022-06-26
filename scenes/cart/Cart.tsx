@@ -29,7 +29,7 @@ const Cart = () => {
         <>
           <View style={cartStyles.emptyCart}>
             <Image style={cartStyles.cartImg} source={require(cartImg)} />
-            <Text style={cartStyles.cartLabel}>Seu carrinho está vazio :c</Text>
+            <Text style={cartStyles.cartLabel}>Seu carrinho está vazio</Text>
           </View>
         </>
       ) : (

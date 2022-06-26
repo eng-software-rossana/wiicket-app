@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import { Appbar, TextInput } from 'react-native-paper';
 import { headerBarStyles } from './headerBarStyles';
 import Product from '../../components/product/Product';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../navigation/RootStackParamList';
 
 const scrollViewStyle = StyleSheet.create({
   scroll: {
@@ -95,7 +104,7 @@ const categories = categories_data.map(category => (
 
 const Home = () => {
   const [searchText, setSearchText] = useState('');
-
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const handleSearch = () => {
     console.log(searchText);
   };
@@ -122,7 +131,9 @@ const Home = () => {
         {categories}
       </ScrollView>
       <ScrollView contentContainerStyle={scrollViewStyle.scroll}>
-        <TouchableOpacity style={scrollViewStyle.buildPCTouchable}>
+        <TouchableOpacity
+          style={scrollViewStyle.buildPCTouchable}
+          onPress={() => navigation.navigate('PcBuild')}>
           <Image
             resizeMode="contain"
             style={scrollViewStyle.buildPC}

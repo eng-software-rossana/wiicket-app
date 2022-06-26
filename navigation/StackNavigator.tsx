@@ -7,6 +7,8 @@ import SignUp from '../scenes/login/SignUp';
 import Login from '../scenes/login/Login';
 import ProductPage from '../scenes/product_page/ProductPage';
 import Payment from '../scenes/payment/Payment';
+import PcBuild from '../scenes/pcBuild/PcBuild';
+import ResumeOrder from '../scenes/pcBuild/ResumeOrder';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -46,6 +48,16 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Payment"
           component={Payment}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PcBuild"
+          component={PcBuild}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ResumeOrder"
+          component={ResumeOrder}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

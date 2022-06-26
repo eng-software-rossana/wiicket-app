@@ -44,7 +44,7 @@ const cartStyles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 10,
     height: 50,
-    width: '60%',
+    width: '70%',
   },
   cartContinue: {
     alignSelf: 'center',
