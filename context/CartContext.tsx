@@ -8,6 +8,7 @@ export type ShoppingList = {
   removeCartItem: (cartItem: string) => void;
   incrementCost: (productCost: number) => void;
   decrementCost: (productCost: number) => void;
+  finishOrder: () => void;
 };
 
 interface Props {
@@ -38,6 +39,11 @@ const CartProvider = ({ children }: Props) => {
     let newCost = Number((cost - productCost).toFixed(2));
     setCost(newCost);
   };
+  const finishOrder = () => {
+    setCartItem([]);
+    setCost(0);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -47,6 +53,7 @@ const CartProvider = ({ children }: Props) => {
         removeCartItem,
         incrementCost,
         decrementCost,
+        finishOrder,
       }}>
       {children}
     </CartContext.Provider>

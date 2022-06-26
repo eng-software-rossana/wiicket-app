@@ -52,6 +52,25 @@ const buttonStyles = StyleSheet.create({
     color: '#FFFFFF',
     fontFamily: 'Verdana',
   },
+  copyPaymentCode: {
+    alignItems: 'center',
+    backgroundColor: '#FA8837',
+    padding: 10,
+    borderRadius: 30,
+    height: 50,
+    marginTop: 80,
+    margin: 10,
+    width: '50%',
+  },
+  goBackStore: {
+    alignItems: 'center',
+    backgroundColor: '#FA8837',
+    padding: 10,
+    borderRadius: 30,
+    height: 50,
+    margin: 10,
+    width: '50%',
+  },
 });
 
 const textStyles = StyleSheet.create({
