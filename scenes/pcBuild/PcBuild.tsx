@@ -1,21 +1,27 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useEffect, useState } from 'react';
-import { BackHandler, Text, View } from 'react-native';
+import { BackHandler, Text, ToastAndroid, View } from 'react-native';
 import { ScrollView } from 'react-native';
 import Button from '../../components/button/Button';
 import PCComponent from '../../components/pcComponent/PcComponent';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { pcBuildStyles } from './pcBuildStyles';
 
-const categories = [
-  'Processador',
-  'Placa de vídeo',
-  'Placa Mãe',
-  'Memória RAM',
-  'Armazenamento',
-  'Gabinete',
-];
+enum categories {
+  'Processador' = 0,
+  'Placa de Vídeo' = 1,
+  'Placa mãe' = 2,
+  'Memória RAM' = 3,
+  'Armazenamento' = 4,
+  'Gabinete' = 5,
+}
+
+const categoriesLength = (
+  Object.values(categories).filter(
+    value => typeof value === 'string',
+  ) as string[]
+).length;
 
 const cpu = [
   {
@@ -160,6 +166,7 @@ const PcBuild = () => {
     );
     return () => backHandler.remove();
   }, []);
+
   useEffect(() => {
     setCategoryComponents(
       pcCase.map(product => (
@@ -195,17 +202,30 @@ const PcBuild = () => {
         text="Adicionar"
         onPress={() => {
           //Adicionar o id do produto em uma lista
-          addComponent(selected);
-          if (currentCategory + 1 === categories.length) {
-            console.log(componentList);
-            navigation.navigate('ResumeOrder', {
-              order: componentList,
-            });
+          if (
+            (currentCategory === categories.Processador ||
+              currentCategory === categories['Placa mãe'] ||
+              currentCategory === categories['Memória RAM']) &&
+            selected.length === 0
+          ) {
+            ToastAndroid.show(
+              'Selecione pelo menos um componente nesta categoria',
+              ToastAndroid.SHORT,
+            );
           } else {
-            setSelected('');
-            setCurrentCategory(currentCategory + 1);
+            if (selected !== '') {
+              addComponent(selected);
+            }
+            if (currentCategory + 1 === categoriesLength) {
+              console.log(componentList);
+              navigation.navigate('ResumeOrder', {
+                order: componentList,
+              });
+            } else {
+              setSelected('');
+              setCurrentCategory(currentCategory + 1);
+            }
           }
-          console.log(selected);
         }}
       />
     </View>

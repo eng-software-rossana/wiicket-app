@@ -1,5 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Card, Title } from 'react-native-paper';
 import { pcComponentStyles } from './pcComponentStyles';
 
@@ -14,7 +13,6 @@ interface Props {
 }
 
 const PCComponent = (props: Props) => {
-  console.log(props.selectedId);
   return (
     <Card
       mode="outlined"
