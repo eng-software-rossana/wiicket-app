@@ -31,6 +31,27 @@ const pcBuildStyles = StyleSheet.create({
     height: 50,
     width: '50%',
   },
+  navigationView: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    padding: 10,
+  },
+  navigationButton: {
+    backgroundColor: '#FA8837',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 30,
+    marginHorizontal: 10,
+    height: 40,
+
+    width: '32%',
+  },
+  navigationText: {
+    fontSize: 14,
+    color: 'white',
+    fontFamily: 'Verdana',
+  },
 });
 
 export { pcBuildStyles };

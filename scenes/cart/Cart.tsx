@@ -39,7 +39,7 @@ const Cart = () => {
             style={cartStyles.cartContinue}
             text="Finalizar"
             onPress={() => {
-              navigation.navigate('Payment');
+              navigation.navigate('ResumeOrder');
             }}
           />
         </>

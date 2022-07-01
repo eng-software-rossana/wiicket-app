@@ -9,7 +9,7 @@ interface Props {
   productID: string;
   description: string;
   selectedId?: string;
-  setSelectedId: Dispatch<SetStateAction<string>>;
+  setSelectedId?: Dispatch<SetStateAction<string>>;
 }
 
 const PCComponent = (props: Props) => {
@@ -22,10 +22,12 @@ const PCComponent = (props: Props) => {
           : pcComponentStyles.card
       }
       onPress={() => {
-        props.setSelectedId(props.productID);
+        if (props.setSelectedId) {
+          props.setSelectedId(props.productID);
+        }
       }}>
       <Card.Cover source={{ uri: props.imgURI }} />
-      <Card.Title titleNumberOfLines={5} title={props.title} />
+      <Card.Title titleNumberOfLines={3} title={props.title} />
       <Card.Content>
         <Title style={pcComponentStyles.cost}>{`R$ ${props.cost}`}</Title>
       </Card.Content>

@@ -20,7 +20,7 @@ const Payment = () => {
   // const pixCode = 'a56c-4928-93be-9b7bf14beeab';
   const orderID = '123456';
 
-  const { finishOrder } = useContext(CartContext) as ShoppingList;
+  const { clearOrder } = useContext(CartContext) as ShoppingList;
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
@@ -55,7 +55,7 @@ const Payment = () => {
         style={buttonStyles.goBackStore}
         text="Voltar a Loja"
         onPress={() => {
-          finishOrder();
+          clearOrder();
           navigation.navigate('TabHome', { screen: 'Loja' });
         }}
       />

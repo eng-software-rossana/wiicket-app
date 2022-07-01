@@ -14,10 +14,6 @@ const productPageStyles = StyleSheet.create({
     fontFamily: 'Verdana',
     fontSize: 18,
     textAlign: 'center',
-    borderStyle: 'solid',
-    borderColor: Colors.grey400,
-    borderRadius: 5,
-    borderWidth: 1,
   },
 });
 

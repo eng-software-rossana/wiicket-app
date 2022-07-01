@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Image,
   ScrollView,
@@ -13,6 +13,7 @@ import Product from '../../components/product/Product';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
+import { CartContext, ShoppingList } from '../../context/CartContext';
 
 const scrollViewStyle = StyleSheet.create({
   scroll: {
@@ -28,7 +29,7 @@ const scrollViewStyle = StyleSheet.create({
 
   buildPCTouchable: {
     width: 600,
-    height: 221,
+    height: 180,
   },
 
   buildPC: {
@@ -81,7 +82,7 @@ const categories_data = [
   },
 ];
 
-const buildPCPath = '../../assets/home/monteSeuPCGrande.jpg';
+const buildPCPath = '../../assets/home/PCBuild.jpg';
 
 const products = json_data.map(product => (
   <Product
@@ -105,6 +106,7 @@ const categories = categories_data.map(category => (
 const Home = () => {
   const [searchText, setSearchText] = useState('');
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const { clearOrder } = useContext(CartContext) as ShoppingList;
   const handleSearch = () => {
     console.log(searchText);
   };
@@ -133,7 +135,10 @@ const Home = () => {
       <ScrollView contentContainerStyle={scrollViewStyle.scroll}>
         <TouchableOpacity
           style={scrollViewStyle.buildPCTouchable}
-          onPress={() => navigation.navigate('PcBuild')}>
+          onPress={() => {
+            clearOrder();
+            navigation.navigate('PcBuild');
+          }}>
           <Image
             resizeMode="contain"
             style={scrollViewStyle.buildPC}

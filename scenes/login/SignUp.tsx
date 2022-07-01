@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import { ToastAndroid, View } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
@@ -39,6 +39,11 @@ const SignUp = () => {
           valid = true;
         }
       }
+    } else {
+      ToastAndroid.show(
+        'Um ou mais campos de cadastro estão preenchidos incorretamente.',
+        ToastAndroid.SHORT,
+      );
     }
     return valid;
   };
@@ -146,6 +151,9 @@ const SignUp = () => {
         text="Cadastrar-se"
         onPress={() => {
           if (isSignUpValid()) {
+            // const success : boolean = api.CreateAccount;
+            //if (success) ToastAndroid.show('Conta criada com sucesso', ToastAndroid.SHORT);
+            //Verificar se o email ao qual foi solicitado o cadastro já existe no nosso banco de dados
             navigation.navigate('Login');
           }
         }}

@@ -3,7 +3,7 @@ export type RootStackParamList = {
   Login: undefined;
   Payment: undefined;
   PcBuild: undefined;
-  ResumeOrder: { order: string[] };
+  ResumeOrder: undefined;
   TabHome: {
     screen?: string;
     product?: string;
