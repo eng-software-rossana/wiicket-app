@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useContext, useState } from 'react';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import { Appbar, TextInput } from 'react-native-paper';
 import { headerBarStyles } from './headerBarStyles';
 import Product from '../../components/product/Product';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../navigation/RootStackParamList';
+import { CartContext, ShoppingList } from '../../context/CartContext';
 
 const scrollViewStyle = StyleSheet.create({
   scroll: {
@@ -19,7 +29,7 @@ const scrollViewStyle = StyleSheet.create({
 
   buildPCTouchable: {
     width: 600,
-    height: 221,
+    height: 180,
   },
 
   buildPC: {
@@ -72,7 +82,7 @@ const categories_data = [
   },
 ];
 
-const buildPCPath = '../../assets/home/monteSeuPCGrande.jpg';
+const buildPCPath = '../../assets/home/PCBuild.jpg';
 
 const products = json_data.map(product => (
   <Product
@@ -95,7 +105,8 @@ const categories = categories_data.map(category => (
 
 const Home = () => {
   const [searchText, setSearchText] = useState('');
-
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+  const { clearOrder } = useContext(CartContext) as ShoppingList;
   const handleSearch = () => {
     console.log(searchText);
   };
@@ -122,7 +133,12 @@ const Home = () => {
         {categories}
       </ScrollView>
       <ScrollView contentContainerStyle={scrollViewStyle.scroll}>
-        <TouchableOpacity style={scrollViewStyle.buildPCTouchable}>
+        <TouchableOpacity
+          style={scrollViewStyle.buildPCTouchable}
+          onPress={() => {
+            clearOrder();
+            navigation.navigate('PcBuild');
+          }}>
           <Image
             resizeMode="contain"
             style={scrollViewStyle.buildPC}
