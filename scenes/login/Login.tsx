@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
+import { AccountDetails, UserContext } from '../../context/UserContext';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { loginStyles } from './loginStyles';
 
@@ -16,6 +17,8 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isSecure, setIsSecure] = useState(true);
   const [showHelperLogin, setShowHelperLogin] = useState(false);
+
+  const { updateEmail } = useContext(UserContext) as AccountDetails;
 
   const loginValidations = () => {
     let valid = false;
@@ -70,6 +73,7 @@ const Login = () => {
           onPress={() => {
             if (true) {
               setShowHelperLogin(false);
+              updateEmail(userEmail);
               navigation.navigate('TabHome', { screen: 'Loja' });
             } else {
               setShowHelperLogin(true);

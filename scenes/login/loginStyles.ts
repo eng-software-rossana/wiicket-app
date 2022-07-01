@@ -14,7 +14,7 @@ const loginStyles = StyleSheet.create({
     paddingLeft: 10,
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
-    marginBottom: 20,
+    marginBottom: 10,
   },
 
   registerStyle: {

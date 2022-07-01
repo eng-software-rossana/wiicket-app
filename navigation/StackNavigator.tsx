@@ -9,6 +9,7 @@ import ProductPage from '../scenes/product_page/ProductPage';
 import Payment from '../scenes/payment/Payment';
 import PcBuild from '../scenes/pcBuild/PcBuild';
 import ResumeOrder from '../scenes/resumeOrder/ResumeOrder';
+import Account from '../scenes/account/Account';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

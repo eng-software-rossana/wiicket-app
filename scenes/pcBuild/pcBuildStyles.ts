@@ -3,11 +3,17 @@ import { StyleSheet } from 'react-native';
 const pcBuildStyles = StyleSheet.create({
   page: { backgroundColor: '#005492', flex: 1 },
   title: {
-    fontSize: 36,
+    // fontSize: 36,
+    // alignSelf: 'center',
+    // fontFamily: 'Verdana',
+    // color: '#FA8837',
+    // fontWeight: 'bold',
+
+    fontSize: 30,
     alignSelf: 'center',
     fontFamily: 'Verdana',
     color: '#FA8837',
-    fontWeight: 'bold',
+    marginBottom: 10,
   },
   category: {
     fontSize: 20,
