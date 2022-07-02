@@ -72,7 +72,7 @@ const CartProduct = (props: Props) => {
       <Card.Title
         titleNumberOfLines={5}
         titleStyle={cartStyles.cartFont}
-        title={`${product.title}`}
+        title={product.title}
       />
       <Card.Content>
         <Title

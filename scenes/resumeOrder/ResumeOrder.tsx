@@ -61,7 +61,7 @@ const ResumeOrder = () => {
 
   return (
     <View style={pcBuildStyles.page}>
-      <Text style={pcBuildStyles.title}>Resumo do Pedido: </Text>
+      <Text style={pcBuildStyles.title}>Resumo do Pedido</Text>
       <TotalCost />
       <ScrollView contentContainerStyle={pcBuildStyles.scrollView}>
         {order}

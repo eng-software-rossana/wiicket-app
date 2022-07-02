@@ -14,6 +14,8 @@ const SignUp = () => {
   const [userEmail, setUserEmail] = useState('');
   const [userName, setUserName] = useState('');
   const [userID, setUserID] = useState('');
+  const [userAddress, setUserAddress] = useState('');
+  const [userCEP, setUserCEP] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isSecure, setIsSecure] = useState(true);
@@ -35,7 +37,7 @@ const SignUp = () => {
     let valid = false;
     if (userEmail && userName && userID && password && confirmPassword) {
       if (password === confirmPassword) {
-        if (userID.length === 11) {
+        if (userID.length === 11 && userCEP.length === 8) {
           valid = true;
         }
       }
@@ -63,6 +65,11 @@ const SignUp = () => {
       setShowHelperUserID(true);
     }
   }, [userID]);
+
+  const limitCepInput = (newText: string): void => {
+    newText = newText.replace(/[^0-9]/g, '');
+    setUserCEP(newText);
+  };
 
   return (
     <View style={signUpStyles.default}>
@@ -109,6 +116,25 @@ const SignUp = () => {
         style={loginStyles.inputStyle}
         theme={{ roundness: 20 }}
         mode={'outlined'}
+        placeholder="Endereço"
+        onChangeText={newText => setUserAddress(newText)}
+        defaultValue={userAddress}
+      />
+
+      <TextInput
+        style={loginStyles.inputStyle}
+        theme={{ roundness: 20 }}
+        mode={'outlined'}
+        placeholder="CEP"
+        onChangeText={newText => limitCepInput(newText)}
+        defaultValue={userCEP}
+        maxLength={8}
+      />
+
+      <TextInput
+        style={loginStyles.inputStyle}
+        theme={{ roundness: 20 }}
+        mode={'outlined'}
         placeholder="Senha"
         onChangeText={newText => setPassword(newText)}
         secureTextEntry={isSecure}
@@ -145,7 +171,6 @@ const SignUp = () => {
         visible={showHelperPassword}>
         As senhas não são iguais
       </HelperText>
-
       <Button
         style={buttonStyles.login}
         text="Cadastrar-se"
