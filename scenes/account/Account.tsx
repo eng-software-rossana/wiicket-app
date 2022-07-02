@@ -96,7 +96,7 @@ const Account = () => {
         theme={{ roundness: 20 }}
         mode={'outlined'}
         placeholder="Endereço"
-        onChangeText={newText => setUserEmail(newText)}
+        onChangeText={newText => setUserAddress(newText)}
         value={userAddress}
       />
 
