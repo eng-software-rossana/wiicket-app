@@ -7,7 +7,7 @@ const productPageStyles = StyleSheet.create({
     flex: 1,
   },
   descriptionLabel: {
-    marginTop: 5,
+    marginTop: 15,
     alignSelf: 'center',
   },
   descriptionContent: {

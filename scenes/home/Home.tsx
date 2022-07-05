@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Image,
   ScrollView,
@@ -21,7 +21,7 @@ const scrollViewStyle = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
   },
-  headerScroll: { height: 45 },
+  headerScroll: { height: 40 },
 
   categoriesScroll: {
     padding: 8,
@@ -407,9 +407,11 @@ const categories = categories_data.map(category => (
 
 const Home = () => {
   const [searchText, setSearchText] = useState('');
+  const [searchTextSubmit, setSearchTextSubmit] = useState('');
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const { clearOrder } = useContext(CartContext) as ShoppingList;
   const handleSearch = () => {
+    setSearchTextSubmit(searchText);
     console.log(searchText);
   };
 
@@ -434,21 +436,6 @@ const Home = () => {
         style={scrollViewStyle.headerScroll}>
         {categories}
       </ScrollView>
-
-      {/* <TouchableOpacity
-        style={scrollViewStyle.buildPCTouchable}
-        onPress={() => {
-          clearOrder();
-          navigation.navigate('PcBuild');
-        }}>
-        <Image
-          resizeMode="contain"
-          style={scrollViewStyle.buildPC}
-          source={require(buildPCPath)}
-        />
-      </TouchableOpacity> */}
-
-      {/* {allItems} */}
 
       <FlatList
         contentContainerStyle={{ alignItems: 'center' }}

@@ -4,6 +4,8 @@ export type RootStackParamList = {
   Payment: undefined;
   PcBuild: undefined;
   ResumeOrder: undefined;
+  ChangePassword: undefined;
+  Account: undefined;
   TabHome: {
     screen?: string;
     product?: string;

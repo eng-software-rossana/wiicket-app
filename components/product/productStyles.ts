@@ -9,9 +9,8 @@ const productStyles = StyleSheet.create({
     flexDirection: 'column',
   },
   cardProductPage: {
-    flex: 1,
-    width: '100%',
-    height: '50%',
+    width: 400,
+    height: 715,
     alignContent: 'center',
     backgroundColor: '#FFFFFF',
   },

@@ -15,7 +15,7 @@ const Account = () => {
   const { email } = useContext(UserContext) as AccountDetails;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [userEmail, setUserEmail] = useState<string>(email);
-  const [userName, setUserName] = useState<string>('Cornélio Gomes da Silva');
+  const [userName, setUserName] = useState<string>('Simone Andreia Almeida');
   const [userID, setUserID] = useState<string>('43266989007');
   const [userAddress, setUserAddress] = useState<string>(
     'Rua dos Jacarandás, José Valter Fortaleza-CE',
@@ -25,7 +25,7 @@ const Account = () => {
 
   const isAccountUpdateValid = (): boolean => {
     let valid = false;
-    if (userEmail && userName && userID) {
+    if (userEmail && userName && userID && userAddress) {
       if (userCEP.length === 8) {
         valid = true;
       }
@@ -118,17 +118,30 @@ const Account = () => {
           O campo de CEP precisa de 8 dígitos
         </HelperText>
       ) : null}
+      <View style={accountStyles.navigationView}>
+        <Button
+          style={accountStyles.navigationButton}
+          text="Salvar"
+          textStyle={accountStyles.navigationText}
+          onPress={() => {
+            if (isAccountUpdateValid()) {
+              ToastAndroid.show(
+                'Modificações atualizadas com sucesso.',
+                ToastAndroid.SHORT,
+              );
+            }
+          }}
+        />
 
-      <Button
-        style={buttonStyles.login}
-        text="Salvar"
-        onPress={() => {
-          ToastAndroid.show(
-            'Modificações atualizadas com sucesso.',
-            ToastAndroid.SHORT,
-          );
-        }}
-      />
+        <Button
+          style={accountStyles.navigationButton}
+          text="Alterar Senha"
+          textStyle={accountStyles.navigationText}
+          onPress={() => {
+            navigation.navigate('ChangePassword');
+          }}
+        />
+      </View>
     </View>
   );
 };
