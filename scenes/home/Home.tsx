@@ -14,13 +14,14 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { CartContext, ShoppingList } from '../../context/CartContext';
+import { FlatList } from 'react-native-gesture-handler';
 
 const scrollViewStyle = StyleSheet.create({
   scroll: {
     display: 'flex',
     alignItems: 'center',
   },
-  headerScroll: { height: 40 },
+  headerScroll: { height: 45 },
 
   categoriesScroll: {
     padding: 8,
@@ -28,8 +29,8 @@ const scrollViewStyle = StyleSheet.create({
   },
 
   buildPCTouchable: {
-    width: 600,
-    height: 180,
+    width: 393,
+    height: 171,
   },
 
   buildPC: {
@@ -394,30 +395,7 @@ const categories_data = [
 
 const buildPCPath = '../../assets/home/PCBuild.jpg';
 
-// const products = json_data.map(product => (
-//   <Product
-//     key={product.productID}
-//     productID={product.productID}
-//     title={product.title}
-//     cost={product.cost}
-//     imgURI={product.imgURI}
-//     description={product.description}
-//   />
-// ));
-
-const categ: any = Object.values(json_data);
-const allItems = categ.map(cat =>
-  cat.map(prod => (
-    <Product
-      key={prod.productID}
-      productID={prod.productID}
-      title={prod.title}
-      cost={prod.cost}
-      imgURI={prod.imgURI}
-      description={prod.description}
-    />
-  )),
-);
+const categ: Object[] = Object.values(json_data);
 
 const categories = categories_data.map(category => (
   <TouchableOpacity
@@ -456,21 +434,58 @@ const Home = () => {
         style={scrollViewStyle.headerScroll}>
         {categories}
       </ScrollView>
-      <ScrollView contentContainerStyle={scrollViewStyle.scroll}>
-        <TouchableOpacity
-          style={scrollViewStyle.buildPCTouchable}
-          onPress={() => {
-            clearOrder();
-            navigation.navigate('PcBuild');
-          }}>
-          <Image
-            resizeMode="contain"
-            style={scrollViewStyle.buildPC}
-            source={require(buildPCPath)}
-          />
-        </TouchableOpacity>
-        {allItems}
-      </ScrollView>
+
+      {/* <TouchableOpacity
+        style={scrollViewStyle.buildPCTouchable}
+        onPress={() => {
+          clearOrder();
+          navigation.navigate('PcBuild');
+        }}>
+        <Image
+          resizeMode="contain"
+          style={scrollViewStyle.buildPC}
+          source={require(buildPCPath)}
+        />
+      </TouchableOpacity> */}
+
+      {/* {allItems} */}
+
+      <FlatList
+        contentContainerStyle={{ alignItems: 'center' }}
+        initialNumToRender={2}
+        data={[{ pcBuildImg: true }, ...categ]}
+        renderItem={({ item }) => {
+          const categoryProductArray = Object.values(item);
+          if (categoryProductArray[0] === true) {
+            return (
+              <TouchableOpacity
+                style={scrollViewStyle.buildPCTouchable}
+                onPress={() => {
+                  clearOrder();
+                  navigation.navigate('PcBuild');
+                }}>
+                <Image
+                  resizeMode="contain"
+                  style={scrollViewStyle.buildPC}
+                  source={require(buildPCPath)}
+                />
+              </TouchableOpacity>
+            );
+          } else {
+            const allProducts = categoryProductArray.map(prod => (
+              <Product
+                key={prod.productID}
+                productID={prod.productID}
+                title={prod.title}
+                cost={prod.cost}
+                imgURI={prod.imgURI}
+                description={prod.description}
+              />
+            ));
+            return <View>{allProducts}</View>;
+          }
+        }}
+      />
     </>
   );
 };
