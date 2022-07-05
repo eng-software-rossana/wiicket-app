@@ -6,6 +6,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import { Appbar, TextInput } from 'react-native-paper';
 import { headerBarStyles } from './headerBarStyles';
@@ -14,6 +15,8 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { CartContext, ShoppingList } from '../../context/CartContext';
+import { useBackHandler } from '@react-native-community/hooks';
+
 import { FlatList } from 'react-native-gesture-handler';
 
 const scrollViewStyle = StyleSheet.create({
@@ -21,7 +24,7 @@ const scrollViewStyle = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
   },
-  headerScroll: { height: 45 },
+  headerScroll: { height: 40 },
 
   categoriesScroll: {
     padding: 8,
@@ -412,6 +415,10 @@ const Home = () => {
   const handleSearch = () => {
     console.log(searchText);
   };
+  useBackHandler(() => {
+    BackHandler.exitApp();
+    return true;
+  });
 
   return (
     <>
@@ -434,21 +441,6 @@ const Home = () => {
         style={scrollViewStyle.headerScroll}>
         {categories}
       </ScrollView>
-
-      {/* <TouchableOpacity
-        style={scrollViewStyle.buildPCTouchable}
-        onPress={() => {
-          clearOrder();
-          navigation.navigate('PcBuild');
-        }}>
-        <Image
-          resizeMode="contain"
-          style={scrollViewStyle.buildPC}
-          source={require(buildPCPath)}
-        />
-      </TouchableOpacity> */}
-
-      {/* {allItems} */}
 
       <FlatList
         contentContainerStyle={{ alignItems: 'center' }}

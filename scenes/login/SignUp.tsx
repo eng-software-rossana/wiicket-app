@@ -35,7 +35,14 @@ const SignUp = () => {
 
   const isSignUpValid = (): boolean => {
     let valid = false;
-    if (userEmail && userName && userID && password && confirmPassword) {
+    if (
+      userEmail &&
+      userName &&
+      userID &&
+      password &&
+      confirmPassword &&
+      userAddress
+    ) {
       if (password === confirmPassword) {
         if (userID.length === 11 && userCEP.length === 8) {
           valid = true;
@@ -126,6 +133,7 @@ const SignUp = () => {
         theme={{ roundness: 20 }}
         mode={'outlined'}
         placeholder="CEP"
+        keyboardType="numeric"
         onChangeText={newText => limitCepInput(newText)}
         defaultValue={userCEP}
         maxLength={8}
@@ -179,6 +187,10 @@ const SignUp = () => {
             // const success : boolean = api.CreateAccount;
             //if (success) ToastAndroid.show('Conta criada com sucesso', ToastAndroid.SHORT);
             //Verificar se o email ao qual foi solicitado o cadastro já existe no nosso banco de dados
+            ToastAndroid.show(
+              'Cadastro realizado com sucesso.',
+              ToastAndroid.SHORT,
+            );
             navigation.navigate('Login');
           }
         }}

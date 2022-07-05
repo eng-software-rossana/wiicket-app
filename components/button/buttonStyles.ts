@@ -17,6 +17,16 @@ const buttonStyles = StyleSheet.create({
     width: '40%',
   },
 
+  changePassword: {
+    alignItems: 'center',
+    backgroundColor: '#FA8837',
+    padding: 10,
+    borderRadius: 30,
+    marginTop: 10,
+    height: 50,
+    width: '40%',
+  },
+
   cart: {
     height: 40,
     width: 40,

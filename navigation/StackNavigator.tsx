@@ -10,6 +10,7 @@ import Payment from '../scenes/payment/Payment';
 import PcBuild from '../scenes/pcBuild/PcBuild';
 import ResumeOrder from '../scenes/resumeOrder/ResumeOrder';
 import Account from '../scenes/account/Account';
+import ChangePassword from '../scenes/changePassword/ChangePassword';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -59,6 +60,16 @@ const StackNavigator = () => {
         <Stack.Screen
           name="ResumeOrder"
           component={ResumeOrder}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ChangePassword"
+          component={ChangePassword}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Account"
+          component={Account}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

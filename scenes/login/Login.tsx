@@ -3,6 +3,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import React, { useContext, useState } from 'react';
 import { Image, Text, View } from 'react-native';
 import { HelperText, TextInput } from 'react-native-paper';
+import { set } from 'react-native-reanimated';
 import Button from '../../components/button/Button';
 import { buttonStyles } from '../../components/button/buttonStyles';
 import { AccountDetails, UserContext } from '../../context/UserContext';
@@ -42,7 +43,7 @@ const Login = () => {
           mode={'outlined'}
           placeholder="Email"
           onChangeText={newText => setUserEmail(newText)}
-          defaultValue={userEmail}
+          value={userEmail}
         />
         <TextInput
           style={loginStyles.inputStyle}
@@ -57,7 +58,7 @@ const Login = () => {
               onPress={() => setIsSecure(!isSecure)}
             />
           }
-          defaultValue={password}
+          value={password}
         />
 
         <HelperText
@@ -71,9 +72,11 @@ const Login = () => {
           style={buttonStyles.login}
           text="Entrar"
           onPress={() => {
-            if (true) {
+            if (loginValidations()) {
               setShowHelperLogin(false);
               updateEmail(userEmail);
+              setPassword('');
+              setUserEmail('');
               navigation.navigate('TabHome', { screen: 'Loja' });
             } else {
               setShowHelperLogin(true);

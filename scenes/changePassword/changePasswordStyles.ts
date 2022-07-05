@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const accountStyles = StyleSheet.create({
+const changePasswordStyles = StyleSheet.create({
   default: {
     //justifyContent: 'center',
     alignItems: 'center',
@@ -13,12 +13,14 @@ const accountStyles = StyleSheet.create({
     fontFamily: 'Verdana',
     color: '#FA8837',
     paddingLeft: 30,
+    paddingBottom: 100,
     marginBottom: 100,
   },
   navigationView: {
     display: 'flex',
     flexDirection: 'row',
     alignSelf: 'center',
+    marginTop: 30,
     padding: 10,
   },
   navigationButton: {
@@ -31,27 +33,11 @@ const accountStyles = StyleSheet.create({
 
     width: '32%',
   },
-  exitButton: {
-    backgroundColor: '#FA8837',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 30,
-    marginTop: 25,
-    marginLeft: 180,
-    height: 40,
-
-    width: '20%',
-  },
   navigationText: {
-    fontSize: 16,
-    color: 'white',
-    fontFamily: 'Verdana',
-  },
-  exitText: {
     fontSize: 16,
     color: 'white',
     fontFamily: 'Verdana',
   },
 });
 
-export { accountStyles };
+export { changePasswordStyles };

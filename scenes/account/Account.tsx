@@ -15,17 +15,17 @@ const Account = () => {
   const { email } = useContext(UserContext) as AccountDetails;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [userEmail, setUserEmail] = useState<string>(email);
-  const [userName, setUserName] = useState<string>('Cornélio Gomes da Silva');
-  const [userID, setUserID] = useState<string>('43266989007');
+  const [userName, setUserName] = useState<string>('Primeiro Usuário');
+  const [userID, setUserID] = useState<string>('12345678900');
   const [userAddress, setUserAddress] = useState<string>(
-    'Rua dos Jacarandás, José Valter Fortaleza-CE',
+    'Rua X, Bairro Y, Cidade-Estado',
   );
-  const [userCEP, setUserCEP] = useState<string>('60748409');
+  const [userCEP, setUserCEP] = useState<string>('12345678');
   const [showHelperUserCEP, setShowHelperUserCEP] = useState<boolean>(false);
 
   const isAccountUpdateValid = (): boolean => {
     let valid = false;
-    if (userEmail && userName && userID) {
+    if (userEmail && userName && userID && userAddress) {
       if (userCEP.length === 8) {
         valid = true;
       }
@@ -118,15 +118,36 @@ const Account = () => {
           O campo de CEP precisa de 8 dígitos
         </HelperText>
       ) : null}
+      <View style={accountStyles.navigationView}>
+        <Button
+          style={accountStyles.navigationButton}
+          text="Salvar"
+          textStyle={accountStyles.navigationText}
+          onPress={() => {
+            if (isAccountUpdateValid()) {
+              ToastAndroid.show(
+                'Modificações atualizadas com sucesso.',
+                ToastAndroid.SHORT,
+              );
+            }
+          }}
+        />
 
+        <Button
+          style={accountStyles.navigationButton}
+          text="Alterar Senha"
+          textStyle={accountStyles.navigationText}
+          onPress={() => {
+            navigation.navigate('ChangePassword');
+          }}
+        />
+      </View>
       <Button
-        style={buttonStyles.login}
-        text="Salvar"
+        style={accountStyles.exitButton}
+        text="Sair"
+        textStyle={accountStyles.exitText}
         onPress={() => {
-          ToastAndroid.show(
-            'Modificações atualizadas com sucesso.',
-            ToastAndroid.SHORT,
-          );
+          navigation.navigate('Login');
         }}
       />
     </View>
