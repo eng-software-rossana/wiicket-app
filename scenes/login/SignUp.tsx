@@ -133,6 +133,7 @@ const SignUp = () => {
         theme={{ roundness: 20 }}
         mode={'outlined'}
         placeholder="CEP"
+        keyboardType="numeric"
         onChangeText={newText => limitCepInput(newText)}
         defaultValue={userCEP}
         maxLength={8}

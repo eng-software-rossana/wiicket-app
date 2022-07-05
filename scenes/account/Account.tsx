@@ -15,12 +15,12 @@ const Account = () => {
   const { email } = useContext(UserContext) as AccountDetails;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [userEmail, setUserEmail] = useState<string>(email);
-  const [userName, setUserName] = useState<string>('Simone Andreia Almeida');
-  const [userID, setUserID] = useState<string>('43266989007');
+  const [userName, setUserName] = useState<string>('Primeiro Usuário');
+  const [userID, setUserID] = useState<string>('12345678900');
   const [userAddress, setUserAddress] = useState<string>(
-    'Rua dos Jacarandás, José Valter Fortaleza-CE',
+    'Rua X, Bairro Y, Cidade-Estado',
   );
-  const [userCEP, setUserCEP] = useState<string>('60748409');
+  const [userCEP, setUserCEP] = useState<string>('12345678');
   const [showHelperUserCEP, setShowHelperUserCEP] = useState<boolean>(false);
 
   const isAccountUpdateValid = (): boolean => {
@@ -142,6 +142,14 @@ const Account = () => {
           }}
         />
       </View>
+      <Button
+        style={accountStyles.exitButton}
+        text="Sair"
+        textStyle={accountStyles.exitText}
+        onPress={() => {
+          navigation.navigate('Login');
+        }}
+      />
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Image,
   ScrollView,
@@ -6,6 +6,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  BackHandler,
 } from 'react-native';
 import { Appbar, TextInput } from 'react-native-paper';
 import { headerBarStyles } from './headerBarStyles';
@@ -14,6 +15,8 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../../navigation/RootStackParamList';
 import { CartContext, ShoppingList } from '../../context/CartContext';
+import { useBackHandler } from '@react-native-community/hooks';
+
 import { FlatList } from 'react-native-gesture-handler';
 
 const scrollViewStyle = StyleSheet.create({
@@ -407,13 +410,15 @@ const categories = categories_data.map(category => (
 
 const Home = () => {
   const [searchText, setSearchText] = useState('');
-  const [searchTextSubmit, setSearchTextSubmit] = useState('');
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const { clearOrder } = useContext(CartContext) as ShoppingList;
   const handleSearch = () => {
-    setSearchTextSubmit(searchText);
     console.log(searchText);
   };
+  useBackHandler(() => {
+    BackHandler.exitApp();
+    return true;
+  });
 
   return (
     <>
