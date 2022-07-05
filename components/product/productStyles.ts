@@ -2,9 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const productStyles = StyleSheet.create({
   card: {
-    flex: 1,
-    width: '80%',
-    height: 370,
+    width: 300,
+    height: 400,
     backgroundColor: '#FFFFFF',
     margin: 10,
     flexDirection: 'column',

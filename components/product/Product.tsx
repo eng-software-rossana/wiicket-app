@@ -33,7 +33,7 @@ const Product = (props: Props) => {
         })
       }>
       <Card.Cover source={{ uri: props.imgURI }} />
-      <Card.Title title={props.title} />
+      <Card.Title title={props.title} titleNumberOfLines={3} />
       <Card.Content>
         <Title style={cartStyles.cartProductPrice}>{`R$ ${props.cost}`}</Title>
       </Card.Content>

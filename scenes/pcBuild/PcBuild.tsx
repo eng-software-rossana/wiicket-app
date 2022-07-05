@@ -19,6 +19,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/112990/processador-intel-core-i5-10400-cache-12mb-2-9ghz-lga-1200-bx8070110400_1589200167_p.jpg',
       description: 'Processador Intel Core i5-10400 - Descrição Padrão',
+      socket: 'Intel',
     },
     {
       productID: '2',
@@ -28,6 +29,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/181088/processador-amd-ryzen-5-5600g-3-9ghz-4-4ghz-max-turbo-am4-video-integrado-6-nucleos-100-100000252box_1627588230_p.jpg',
       description: 'Processador AMD Ryzen 5 5600G - Descrição Padrão',
+      socket: 'AM4',
     },
     {
       productID: '3',
@@ -37,6 +39,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/320799/processador-amd-ryzen-5-5500-cache-19mb-3-7ghz-4-2ghz-max-turbo-am4-100-100000457box_1647636796_gg.jpg',
       description: 'Processador AMD Ryzen 5 5500 - Descrição Padrão',
+      socket: 'AM4',
     },
     {
       productID: '4',
@@ -45,6 +48,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/125554/processador-intel-pentium-gold-g6400-processor-cache-4mb-4-00-ghz_1600435408_gg.jpg',
       description: 'Processador Intel Pentium Gold G6400 - Descrição Padrão',
+      socket: 'Intel',
     },
     {
       productID: '5',
@@ -53,6 +57,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/129460/processador-amd-ryzen-9-5900x-cache-70mb-3-8ghz-4-7ghz-max-turbo-am4-100-100000061wof_1604585280_gg.jpg  ',
       description: 'Processador AMD Ryzen 9 5900X - Descrição Padrão',
+      socket: 'AM4',
     },
   ],
   gpu: [
@@ -112,6 +117,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/115216/placa-mae-asus-tuf-gaming-b550m-plus-amd-b550-matx-ddr4_1638447289_p.jpg',
       description: 'Placa-Mãe Asus TUF Gaming B550M-Plus - Descrição Padrão',
+      socket: 'AM4',
     },
     {
       productID: '12',
@@ -120,6 +126,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/302590/placa-mae-msi-intel-lga1200-matx-ddr4-h510m-a-pro_1642523398_p.jpg',
       description: 'Placa Mãe MSI H510M-A PRO - Descrição Padrão',
+      socket: 'Intel',
     },
     {
       productID: '13',
@@ -128,6 +135,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/302590/placa-mae-msi-intel-lga1200-matx-ddr4-h510m-a-pro_1642523398_p.jpg',
       description: 'Placa-mãe Asus PRIME H610M-A D4 - Descrição Padrão',
+      socket: 'Intel',
     },
     {
       productID: '14',
@@ -137,6 +145,7 @@ const categoriesData: any = {
         'https://images.kabum.com.br/produtos/fotos/114782/placa-mae-gigabyte-b550m-ds3h-amd-am4-micro-atx-ddr4_1594906287_p.jpg',
       description:
         'Placa-Mãe Gigabyte B550M DS3H, AMD AM4, Micro ATX, DDR4 - Descrição Padrão',
+      socket: 'AM4',
     },
     {
       productID: '15',
@@ -145,6 +154,7 @@ const categoriesData: any = {
       imgURI:
         'https://images.kabum.com.br/produtos/fotos/100672/placa-mae-asrock-b450m-steel-legend-amd-am4-matx-ddr4-90-mxb9y0-a0uayz_placa-mae-asrock-b450m-steel-legend-amd-am4-matx-ddr4-90-mxb9y0-a0uayz_1552586908_gg.jpg',
       description: 'Placa Mãe MSI H510M-A PRO - Descrição Padrão',
+      socket: 'AM4',
     },
   ],
   memory: [
@@ -356,6 +366,7 @@ interface Product {
   cost: number;
   imgURI?: string;
   description: string;
+  socket?: string;
 }
 
 const categoriesLength = (
@@ -366,6 +377,7 @@ const categoriesLength = (
 const PcBuild = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [currentCategory, setCurrentCategory] = useState(0);
+  const [cpuSocket, setCpuSocket] = useState<string>('');
   const [selected, setSelected] = useState<string>('');
   const [categoryComponents, setCategoryComponents] = useState<JSX.Element[]>(
     [],
@@ -387,20 +399,42 @@ const PcBuild = () => {
   useEffect(() => {
     //category = api.getCategoryComponents("Category", requirements);
     const componentsList: Product[] = componentsArray[currentCategory];
-    setCategoryComponents(
-      componentsList.map(product => (
-        <PCComponent
-          key={product.productID}
-          productID={product.productID}
-          title={product.title}
-          cost={product.cost}
-          imgURI={product.imgURI}
-          description={product.description}
-          selectedId={selected}
-          setSelectedId={setSelected}
-        />
-      )),
-    );
+    if (currentCategory === categories['Placa mãe']) {
+      const p = componentsList.map(product => {
+        const filteredComponents =
+          product.socket === cpuSocket ? (
+            <PCComponent
+              key={product.productID}
+              productID={product.productID}
+              title={product.title}
+              cost={product.cost}
+              imgURI={product.imgURI}
+              description={product.description}
+              selectedId={selected}
+              setSelectedId={setSelected}
+            />
+          ) : null;
+        return filteredComponents;
+      });
+      if (p !== null) {
+        setCategoryComponents(p);
+      }
+    } else {
+      setCategoryComponents(
+        componentsList.map(product => (
+          <PCComponent
+            key={product.productID}
+            productID={product.productID}
+            title={product.title}
+            cost={product.cost}
+            imgURI={product.imgURI}
+            description={product.description}
+            selectedId={selected}
+            setSelectedId={setSelected}
+          />
+        )),
+      );
+    }
   }, [currentCategory, selected]);
 
   useEffect(() => {
@@ -439,6 +473,12 @@ const PcBuild = () => {
               const componentCost: number = componentsList.find(
                 component => component.productID === selected,
               )?.cost!;
+              if (currentCategory === categories.Processador) {
+                const componentSocket: string = componentsList.find(
+                  component => component.productID === selected,
+                )?.socket!;
+                setCpuSocket(componentSocket);
+              }
               incrementCost(componentCost);
               addCartItem(selected);
             }
